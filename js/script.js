@@ -20,82 +20,82 @@ var quotes = [
   {
 
     quote: "Art is Skill; its display, application, or expression.",
-    source: "- Oxford English Dictionary Online.",
+    source: " Oxford English Dictionary Online.",
     citation: "published again for Mental Floss 'What is Art?' in 2014.",
-    year: "1300s.",
+    year: " 1300s.",
     tags: "#dictionarysays"
 
   },
   {
 
     quote: "The expression or application of creative skill and imagination, typically in a visual form such as painting, drawing, or sculpture, producing works to be appreciated primarily for their beauty or emotional power.",
-    source: "- Oxford English Dictionary Online.",
+    source: " Oxford English Dictionary Online.",
     citation: "published again for Mental Floss 'What is Art?' in 2014",
     year: "1600s.",
-    tags: "#dictionarysays"
+    tags: " #dictionarysays"
 
   },
   {
 
     quote: "Art is either a plagiarist or a revolutionary.",
-    source: "- Paul Gauguin (1848–1903), Peruvian-born French artist",
+    source: " Paul Gauguin (1848–1903), Peruvian-born French artist",
     citation: "quoted in Huneker, The Pathos of Distance",
     year: 1913,
-    tags: "#imitationVScreation"
+    tags: " #imitationVScreation"
 
   },
   {
 
     quote: "Filling a space in a beautiful way. That's what art means to me.",
-    source: "- Georgia O'Keeffe (1887–1986), American painter",
+    source: " Georgia O'Keeffe (1887–1986), American painter",
     citation: "Art News December 1977",
     year: 1977,
-    tags: "#beauty"
+    tags: " #beauty"
 
   },
   {
 
     quote: "We all know that Art is not truth. Art is a lie that makes us realize truth.",
-    source: "- Pablo Picasso (1881–1973), Spanish painter living in France",
+    source: " Pablo Picasso (1881–1973), Spanish painter living in France",
     citation: "quoted in Dore Ashton's 'Picasso on Art'",
     year: 1972,
-    tags: "#revelation"
+    tags: " #revelation"
 
   },
   {
 
     quote: "[In order to distinguish Andy Warhol’s Brillo Boxes from actual Brillo boxes, art can be defined as] embodied meaning.",
-    source: "- Arthur C. Danto (1924–2013), American philosopher of art",
+    source: " Arthur C. Danto (1924–2013), American philosopher of art",
     citation: "What Art Is",
     year: 2013,
-    tags: "#imitationVScreation"
+    tags: " #imitationVScreation"
 
   },
   {
 
     quote: "What is art? Art grows out of grief and joy, but mainly grief. It is born of people’s lives.",
-    source: "- Edvard Munch (1863–1944), Norwegian artist",
+    source: " Edvard Munch (1863–1944), Norwegian artist",
     citation: "'Edvard Munch: The Man and His Art' by Ragna Stang",
     year: 1977,
-    tags: "#self-expression"
+    tags: " #self-expression"
 
   },
   {
 
     quote: "Art is a habit-forming drug.",
-    source: "- Marcel Duchamp (1887–1968), French-born American artist",
+    source: " Marcel Duchamp (1887–1968), French-born American artist",
     citation: "quoted in Richter, 'Dada: art and anti-art'",
     year: 1964,
-    tags: "#addiction"
+    tags: " #addiction"
 
   },
   {
 
     quote: "Art does not reproduce the visible; rather, it makes visible.",
-    source: "- Paul Klee (1879–1940), Swiss painter",
+    source: " Paul Klee (1879–1940), Swiss painter",
     citation: "The Inward Vision",
     year: 1959,
-    tags: "#revelation"
+    tags: " #revelation"
 
   }
 
@@ -210,18 +210,12 @@ Function below will:
 2)Choose random quote based on parameters set by program: a random number between 0 - and last number of array index length
 3)Return random quote object from "quotes" array index
 ***/
+function getRandomQuote() {
+  let randomQuote = Math.floor(Math.random() * quotes.length);
 
-var timer;
-function getRandomQuote(array) { 
-  var quoteIndex = Math.floor(Math.random() * (quotes.length)); 
-  for (var i = 0; i < array.length; i++) { 
-       var randomQuote = array[quoteIndex]; 
-  }
-  return randomQuote; 
+  return quotes[randomQuote];
 }
-var resultQuote = getRandomQuote(quotes);
-console.log(resultQuote);
-
+  console.log(randomQuote);
 /*** 
 Function below will:
 1) Generate a random number ("getRandomColor") to then apply to the "rbgColor" array,
@@ -229,23 +223,20 @@ Function below will:
 3)Return a random background color object from "colors" array index
 ***/
  
-function getRandomColor(array) {
-  var colorIndex = Math.floor(Math.random() * (colors.length));
-  for (var i = 0; i < array.length; i++) {
-       var randomColor = array[colorIndex];
-  }
-  return randomColor;
+function getRandomColor() {
+  let randomColor = Math.floor(Math.random() * colors.length);
+
+  return colors[randomColor];
 }
 
-var resultColor = getRandomColor(colors);
 
 /***
 
 Function below will:
-Set an interval timer to variable named above allowing quote to auto-switch
+Set an interval timer to variable by allowing quote to auto-switch
 after 15 seconds.
 ***/
-
+let timer;
 function startTimer() {
   timer = setInterval(printQuote, 15000);
 }
@@ -267,26 +258,33 @@ Allow randomly generated quote and other indicated information to be printed as 
 ***/
 
 function printQuote() {  
-  var result = getRandomQuote(quotes);
-  message = "<p class='quote'>" + result.quote + "</p>";
-  message += "<p class='source'>" + result.source;
-  if ( result.citation ) {
-    message += "<span class='citation'>" + result.citation + "</span>";
+  let displayQuote = getRandomQuote();
+  let displayColor = getRandomColor();
+  message = "<p class='quote'>" + displayQuote.quote + "</p>";
+  message += "<p class='source'>" + displayQuote.source;
+  if ( displayQuote.citation ) {
+    message += "<span class='citation'>" + displayQuote.citation + "</span>";
   } else {
     message += '';
   } 
-  if ( result.year ) { 
-    message += "<span class='year'>" + result.year + "</span>";
+  if ( displayQuote.year ) { 
+    message += "<span class='year'>" + displayQuote.year + "</span>";
   } else { 
     message += '';
   }
-	if ( result.tags ) {   
-    message += "<span class='tags'>" + result.tags + "</span>";
+	if ( displayQuote.tags ) {   
+    message += "<span class='tags'>" + displayQuote.tags + "</span>";
   } else { 
   message += "</p>";
   }
-document.getElementById('quote-box').innerHTML = message;
+
+document.getElementById("quote-box").innerHTML = html;
+document.body.style.background = displayColor.background;
+
+clearTimer();
+startTimer();
 }
+
 printQuote();
 
 /***
@@ -297,8 +295,4 @@ printQuote();
 ***/
 
 document.getElementById("loadQuote").addEventListener("click", printQuote, false);
-
-
-
-
 
