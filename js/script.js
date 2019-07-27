@@ -122,16 +122,11 @@ console.log(result);
 
 
 /***
-  Create the `printQuote` function to: x
-   - Call the `getRandomQuote` function and assign it to a variable. x
-   - Create a variable for the HTML string and set it equal to an empty string.x- Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don"t forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
+Function below will:
+Allow randomly generated quote and other indicated information to be printed as a "message" as programmed.
+  (-Please note: For the purpose of this project "if/else" statements have been included in the code although 
+  the optional properties for each quote object are also included. I wanted to demonstrate my understanding of 
+  the material.) 
 ***/
 
 function printQuote() {  
@@ -152,7 +147,7 @@ function printQuote() {
     message += "<span class='tags'>" + result.tags + "</span>";
   } else { 
   message += "</p>";
-}
+  }
 }
 document.getElementById('quote-box').innerHTML = message;
 printQuote(); 
