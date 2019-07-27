@@ -11,7 +11,6 @@ Below is an Array of quote objects as compiled from http://mentalfloss.com/artic
 all attempting to answer the question "What is Art?":
 - All [9] quote objects have been placed into the variable "quotes", contained inside of an Array.
 - All quote objects contain properties for: "source", "citation", "year", and "tags."
-
 I am attempting to get an "exceeds expectations" review on this project.
 Thank you!
 ***/
