@@ -7,9 +7,9 @@ project 1 - A Random Quote Generator
 
 
 /*** 
-Below is an Array of quote objects as compiled from http://mentalfloss.com/article/57501/27-responses-question-what-art 
+Below is an array of quote objects as compiled from http://mentalfloss.com/article/57501/27-responses-question-what-art 
 all attempting to answer the question "What is Art?":
-- All [9] quote objects have been placed into the variable "quotes", contained inside of an Array.
+- All [12] quote objects have been placed into the variable "quotes", contained inside of an array.
 - All quote objects contain properties for: "source", "citation", "year", and "tags."
 I am attempting to get an "exceeds expectations" review on this project.
 Thank you!
@@ -49,8 +49,8 @@ var quotes = [
 
     quote: "Filling a space in a beautiful way. That's what art means to me.",
     source: " Georgia O'Keeffe (1887–1986), American painter",
-    citation: "Art News December 1977",
-    year: 1977,
+    citation: "Art News",
+    year: "December 1977",
     tags: "#beauty"
 
   },
@@ -93,20 +93,46 @@ var quotes = [
   {
 
     quote: "Art does not reproduce the visible; rather, it makes visible.",
-    source: " Paul Klee (1879–1940), Swiss painter",
+    source: "Paul Klee (1879–1940), Swiss painter",
     citation: "The Inward Vision",
     year: 1959,
     tags: "#revelation"
 
-  }
+  },
+  {
 
+    quote: "Art is harmony.",
+    source: "Georges Seurat (1859–1891), French painter",
+    citation: "letter to Maurice Beaubourg",
+    year: 1890,
+    tags:"#beauty"
+
+  },
+  {
+
+    quote: "To me the thing that art does for life is to clean it – to strip it to form.",
+    source: "Robert Frost (1874–1963), American poet",
+    citation: "in 'Fire and Ice: The Art and Thoughts of Robert Frost' by Lawrence Thompson",
+    year: 1942,
+    tags:"#revelation"
+
+  },
+  { 
+    
+    quote: "To give a body and a perfect form to one’s thought, this—and only this—is to be an artist.",
+    source: "Jacques-Louis David (1748–1825), French painter",
+    citation: "in Jacques-Louis David, by Anita Brooker",
+    year: 1980,
+    tags:"#self-expression"
+
+  } 
 ];
 
-console.log(quotes);
-/***
-Function below will:
-1)Generate a "random" background color (out of a list of many that I have chosen)
-2)and display in the background as each newly generated quote is refreshed
+console.log(quotes); //this was in the project instructions, but wasn't sure if I should leave it here.
+
+/*** 
+Below is an array of color objects stored inside the "colors" variable that will later be called to generate a random background color
+to display behind each randome quote.
 ***/
 
 var colors = [
@@ -205,94 +231,92 @@ var colors = [
   }
 
 ];
+
 /***
 Function below will: 
-1)Generate a random number ("getRandomQuote") to then apply to "quotes" array,
-2)Choose random quote based on parameters set by program: a random number between 0 - and last number of array index length
-3)Return random quote object from "quotes" array index
+1)Generates random number between 0 - last index in array perameter
+2)Use random number and box notation to get random item from "quotes" array
+3)Return random quote 
 ***/
 
-var timer;
-function getRandomQuote(array) { 
-  var quoteIndex = Math.floor(Math.random() * (quotes.length)); 
+function getRandomQuote(array){ 
+  var quoteIndex = Math.floor(Math.random() * (quotes.length)); // 1
   for (var i = 0; i < array.length; i++) { 
-       var randomQuote = array[quoteIndex]; 
+       var randomQuote = array[quoteIndex]; // 2
   }
-  return randomQuote; 
+  return randomQuote; // 3
 }
-var resultQuote = getRandomQuote(quotes);
-console.log(resultQuote);
+
 
 /*** 
 Function below will:
 1) Generate a random number ("getRandomColor") to then apply to the "colors" array,
 2) Choose a random color based on parameters set by the program: a random number between 0 - and last number of the array index length
-3)Return a random background color object from "colors" array index
+3) Return a random background color object from "colors" array index
 ***/
  
-function getRandomColor(array) {
-  var colorIndex = Math.floor(Math.random() * (colors.length));
+function getRandomColor(array){
+  var colorIndex = Math.floor(Math.random() * (colors.length)); // 1
   for (var i = 0; i < array.length; i++) {
-       var randomColor = array[colorIndex];
+       var randomColor = array[colorIndex]; // 2
   }
-  return randomColor;
+  return randomColor; // 3
 }
 
-var resultColor = getRandomColor(colors);
 
-/***
-Function below will:
-Set an interval timer to variable named above allowing quote to auto-switch
-after 15 seconds.
-***/
 
-function startTimer() {
-  timer = setInterval(printQuote, 15000);
-}
-/*** 
+/** 
 Function below will:
-Clear interval variable timer
-***/
-function clearTimer() {
-  clearInterval(timer);
-}
-/*** 
- 
-Function below will:
-Allow randomly generated quote and other indicated information to be printed as a "message" as programmed.
+Allow randomly generated quote and other indicated information (prop values: citation, source, year, tags) to be printed in the "html" variable as programmed.
   (-Please note: For the purpose of this project "if/else" statements have been included in the code although 
   the optional properties for each quote object are also included. I wanted to demonstrate my understanding of 
   the material.) 
+Will allow "getRandomColor" variable information to be stored and called, and thus executed, making the program display the randomly selected background color each time "getRandomQuote" is printed.
 ***/
 
-function printQuote() {  
-  var result = getRandomQuote(quotes);
-  message = "<p class='quote'>" + result.quote + "</p>";
-  message += "<p class='source'>" + result.source;
-  if ( result.citation ) {
-    message += "<span class='citation'>" + result.citation + "</span>";
-  } else {
-    message += '';
+function printQuote(){  
+  var resultQuote = getRandomQuote(quotes); // variable that calls "getRandomQuote" function
+  var displayColor = getRandomColor(colors); // variable that calls "getRandomColor" function
+  var html = ''; // variable that initiates html string
+  html = '<p class="quote">' + resultQuote.quote + '</p>'; // "quote" property will be added to string
+  html += '<p class="source">' + resultQuote.source; // "source" property will be added to string
+  if ( resultQuote.citation ) { // program checks to see if there is a "citation" property to add to the string
+    html += '<span class="citation">' + resultQuote.citation + '</span>'; // if there is, it will be added to the string
+  } else { // otherwise
+    html += ''; // the string will continue without printing "citation"
   } 
-  if ( result.year ) { 
-    message += "<span class='year'>" + result.year + "</span>";
-  } else { 
-    message += '';
+  if ( resultQuote.year ) { // program checks to see if there is a "year" property to add to the string
+    html += '<span class="year">' + resultQuote.year + '</span>'; // if there is it will be added to the string
+  } else { // otherwise
+    html += ''; // the string will continue without printing "year"
   }
-	if ( result.tags ) {   
-    message += "<span class='tags'>" + result.tags + "</span>";
-  } else { 
-  message += "</p>";
+  if ( resultQuote.tags ) {  // the program checks to see if there is a "tags" property to add to the string   
+    html += '<span class="tags">' + resultQuote.tags + '</span>'; // if there is it will be added to the string
+  } else { // otherwise
+  html += '</p>'; // the string will close
   }
-document.getElementById('quote-box').innerHTML = message;
+document.getElementById('quote-box').innerHTML = html; // html string completed
+document.body.style.background = displayColor.backgroundColor; // background color will randomly change when each new quote is displayed
 }
-printQuote();
 
 /***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
+Function below will:
+1) Clear the timer and reset to start again on continuous loop
+2) Trigger the printQuote function
+3) Set the quote to change automatically at a set interval of every 15 seconds (but it actually seems faster)
+
+***/
+
+var quoteInterval = window.setInterval(printQuote, 15000); 
+function clearInterval(){
+  window.clearInterval(quoteInterval);
+  quoteInterval = window.setInterval(printQuote, 15000);
+}
+
+
+/***
+Code below will:
+Force load random quote from "quotes" array index when "Show another quote" when button on the screen is activated ("clicked") by user
 ***/
 
 document.getElementById("loadQuote").addEventListener("click", printQuote, false);
