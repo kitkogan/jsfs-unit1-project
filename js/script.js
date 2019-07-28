@@ -93,7 +93,7 @@ var quotes = [
   {
 
     quote: "Art does not reproduce the visible; rather, it makes visible.",
-    source: "Paul Klee (1879–1940), Swiss painter",
+    source: " Paul Klee (1879–1940), Swiss painter",
     citation: "The Inward Vision",
     year: 1959,
     tags: "#revelation"
@@ -102,7 +102,7 @@ var quotes = [
   {
 
     quote: "Art is harmony.",
-    source: "Georges Seurat (1859–1891), French painter",
+    source: " Georges Seurat (1859–1891), French painter",
     citation: "letter to Maurice Beaubourg",
     year: 1890,
     tags:"#beauty"
@@ -111,7 +111,7 @@ var quotes = [
   {
 
     quote: "To me the thing that art does for life is to clean it – to strip it to form.",
-    source: "Robert Frost (1874–1963), American poet",
+    source: " Robert Frost (1874–1963), American poet",
     citation: "in 'Fire and Ice: The Art and Thoughts of Robert Frost' by Lawrence Thompson",
     year: 1942,
     tags:"#revelation"
@@ -120,15 +120,13 @@ var quotes = [
   { 
     
     quote: "To give a body and a perfect form to one’s thought, this—and only this—is to be an artist.",
-    source: "Jacques-Louis David (1748–1825), French painter",
+    source: " Jacques-Louis David (1748–1825), French painter",
     citation: "in Jacques-Louis David, by Anita Brooker",
     year: 1980,
     tags:"#self-expression"
 
   } 
 ];
-
-console.log(quotes); //this was in the project instructions, but wasn't sure if I should leave it here.
 
 /*** 
 Below is an array of color objects stored inside the "colors" variable that will later be called to generate a random background color
@@ -239,7 +237,7 @@ Function below will:
 3)Return random quote 
 ***/
 
-function getRandomQuote(array){ 
+function getRandomQuote(array) { 
   var quoteIndex = Math.floor(Math.random() * (quotes.length)); // 1
   for (var i = 0; i < array.length; i++) { 
        var randomQuote = array[quoteIndex]; // 2
@@ -255,7 +253,7 @@ Function below will:
 3) Return a random background color object from "colors" array index
 ***/
  
-function getRandomColor(array){
+function getRandomColor(array) {
   var colorIndex = Math.floor(Math.random() * (colors.length)); // 1
   for (var i = 0; i < array.length; i++) {
        var randomColor = array[colorIndex]; // 2
@@ -274,7 +272,7 @@ Allow randomly generated quote and other indicated information (prop values: cit
 Will allow "getRandomColor" variable information to be stored and called, and thus executed, making the program display the randomly selected background color each time "getRandomQuote" is printed.
 ***/
 
-function printQuote(){  
+function printQuote() {  
   var resultQuote = getRandomQuote(quotes); // variable that calls "getRandomQuote" function
   var displayColor = getRandomColor(colors); // variable that calls "getRandomColor" function
   var html = ''; // variable that initiates html string
@@ -308,7 +306,7 @@ Function below will:
 ***/
 
 var quoteInterval = window.setInterval(printQuote, 15000); 
-function clearInterval(){
+function clearInterval() {
   window.clearInterval(quoteInterval);
   quoteInterval = window.setInterval(printQuote, 15000);
 }
