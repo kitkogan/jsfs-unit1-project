@@ -16,6 +16,7 @@ Thank you!
 ***/
 
 
+var viewedQuotes = [];
 
 var quotes = [
   {
@@ -233,16 +234,21 @@ var colors = [
 /***
 Function below will: 
 1)Generates random number between 0 - last index in array perameter
-2)Use random number and box notation to get random item from "quotes" array
-3)Return random quote 
+2)Use random number to select an array item to splice from the list and prevent quote from being repeated
+3)Return random quote from splicedQuotes array
 ***/
 
-function getRandomQuote(array) { 
-  var quoteIndex = Math.floor(Math.random() * (quotes.length)); // 1
-  for (var i = 0; i < array.length; i++) { 
-       var randomQuote = array[quoteIndex]; // 2
+function getRandomQuote() { 
+  var randomQuote = Math.floor(Math.random() * quotes.length); // 1
+  var splicedQuotes = quotes.splice(randomQuote, 1)[0]; // 2
+  viewedQuotes.push(splicedQuotes);
+
+  if (quotes.length === 0 ) {
+    quotes = viewedQuotes;
+    viewedQuotes = [];
   }
-  return randomQuote; // 3
+
+  return splicedQuotes; // 3
 }
 
 
@@ -254,10 +260,9 @@ Function below will:
 ***/
  
 function getRandomColor(array) {
-  var colorIndex = Math.floor(Math.random() * (colors.length)); // 1
-  for (var i = 0; i < array.length; i++) {
-       var randomColor = array[colorIndex]; // 2
-  }
+  var colorIndex = Math.floor(Math.random() * (colors.length)); // 
+  var randomColor = array[colorIndex]; // 2
+  
   return randomColor; // 3
 }
 
